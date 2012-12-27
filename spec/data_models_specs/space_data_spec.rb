@@ -2,19 +2,13 @@ require 'spec_helper'
 
 describe SpaceData do
 
-  let(:raw_data) do
-    <<-DATA
-      Kournikova Anna F F 6-3-1975 Red
-      Hingis Martina M F 4-2-1979 Green
-      Seles Monica H F 12-2-1973 Black
-    DATA
-  end
-
-  let(:space_data) { SpaceData.new(raw_data) }  
+  let(:file_path) { "spec/fixtures/space.txt" }
+  let(:raw_data) { File.open(file_path).read }
+  let(:space_data) { SpaceData.new(file_path) }  
 
   describe "#initialize" do
 
-    it "should store raw data upon creation" do
+    it "should store raw data from a file" do
       space_data.raw_data.should == raw_data
     end
 

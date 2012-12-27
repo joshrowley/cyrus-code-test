@@ -3,26 +3,12 @@ describe RecordFactory do
   describe ".create_from_data" do
 
     let(:comma_data_file_path) { "spec/fixtures/comma.txt" }
-
-    let(:pipe_raw_data) do
-      <<-DATA
-        Smith | Steve | D | M | Red | 3-3-1985
-        Bonk | Radek | S | M | Green | 6-3-1975
-        Bouillon | Francis | G | M | Blue | 6-3-1975
-      DATA
-    end
-
-    let(:space_raw_data) do
-      <<-DATA
-        Kournikova Anna F F 6-3-1975 Red
-        Hingis Martina M F 4-2-1979 Green
-        Seles Monica H F 12-2-1973 Black
-      DATA
-    end
+    let(:pipe_data_file_path) { "spec/fixtures/pipe.txt" }
+    let(:space_data_file_path) { "spec/fixtures/space.txt" }
 
     let(:comma_data) { CommaData.new(comma_data_file_path) }
-    let(:pipe_data) { PipeData.new(pipe_raw_data) }
-    let(:space_data) { SpaceData.new(space_raw_data) }
+    let(:pipe_data) { PipeData.new(pipe_data_file_path) }
+    let(:space_data) { SpaceData.new(space_data_file_path) }
 
     it "should build records from parsable data objects" do
       result = [

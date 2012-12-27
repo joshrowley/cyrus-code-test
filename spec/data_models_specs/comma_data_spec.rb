@@ -3,9 +3,7 @@ require 'spec_helper'
 describe CommaData do
 
   let(:file_path) { "spec/fixtures/comma.txt" }
-  let(:raw_data) do
-    File.open(file_path).read
-  end
+  let(:raw_data) { File.open(file_path).read }
   let(:comma_data) { CommaData.new(file_path) }
 
   describe "#initialize" do

@@ -1,14 +1,14 @@
 class SpaceData
   attr_reader :raw_data
 
-  def initialize(raw_data)
-    @raw_data = raw_data
+  def initialize(file_path)
+    @raw_data = File.open(file_path).read
   end
 
   def parse_record_params
     parsed_data.inject([]) do |array, row|
       array << {  :last_name => row[0],
-                  :first_name => row[1],
+                :first_name => row[1],
                   :middle_initial => row[2],
                   :gender => row[3],
                   :dob => row[4],
