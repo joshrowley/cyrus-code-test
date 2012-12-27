@@ -46,11 +46,11 @@ class RecordFactory
 
 All ducktyped, all respond to :parse
 
-class CSVData
+class CommaDelimited
 
-class PipedData
+class PipeDelimited
 
-class SpacedData 
+class SpaceDelimited 
 
 
 
