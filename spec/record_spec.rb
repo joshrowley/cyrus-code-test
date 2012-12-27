@@ -22,8 +22,21 @@ describe Record do
       record.first_name.should == "Martina"
     end
 
-    it "should store gender" do
-      record.gender.should == "Female"
+    context "it should store different gender string inputs as a standard symbol" do
+
+      it "should store Female as :female" do
+        record.gender.should == :female
+      end
+
+      it "should store F as :female" do
+      end
+
+      it "should store Male as :male" do
+      end
+
+      it "should store M as :male" do
+      end
+
     end
 
     context "it should store date of birth as a date object" do
