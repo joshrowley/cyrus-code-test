@@ -2,18 +2,15 @@ require 'spec_helper'
 
 describe CommaData do
 
+  let(:file_path) { "spec/fixtures/comma.txt" }
   let(:raw_data) do
-    <<-DATA
-      Abercrombie, Neil, Male, Tan, 2/13/1943
-      Bishop, Timothy, Male, Yellow, 4/23/1967
-      Kelly, Sue, Female, Pink, 7/12/1959
-    DATA
+    File.open(file_path).read
   end
-  let(:comma_data) { CommaData.new(raw_data) }
+  let(:comma_data) { CommaData.new(file_path) }
 
   describe "#initialize" do
 
-    it "should store raw data upon creation" do
+    it "should store raw data from a file" do
       comma_data.raw_data.should == raw_data
     end
 

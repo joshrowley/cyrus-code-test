@@ -9,7 +9,7 @@ describe Record do
       { :last_name => "Hingis",
         :first_name => "Martina",
         :gender => "Female",
-        :dob => dob,
+        :dob => "4-2-1979",
         :fav_color => "Green" }
     end
     let(:record) { Record.new(record_params)}
@@ -26,8 +26,22 @@ describe Record do
       record.gender.should == "Female"
     end
 
-    it "should store date of birth" do
-      record.dob.should == dob
+    context "it should store date of birth as a date object" do
+
+      it "should convert strings with %m-%d-%Y format to date objects" do
+        record.dob.should == Date.new(1979, 4, 2)
+      end
+
+      it "should convert strings with %m/%d/%Y format to date objects" do
+        record_params = { :last_name => "Hingis",
+        :first_name => "Martina",
+        :gender => "Female",
+        :dob => "4/2/1979",
+        :fav_color => "Green" }
+        record = Record.new(record_params)
+        record.dob.should == Date.new(1979, 4, 2)
+      end
+
     end
 
     it "should store favorite color" do

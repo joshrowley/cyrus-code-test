@@ -3,8 +3,8 @@ require 'csv'
 class CommaData
   attr_reader :raw_data
 
-  def initialize(raw_data)
-    @raw_data = raw_data
+  def initialize(file_path)
+    @raw_data = File.open(file_path).read
   end
 
   def parse_record_params
