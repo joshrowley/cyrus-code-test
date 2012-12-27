@@ -4,12 +4,12 @@ describe Record do
 
   describe "#initialize" do
 
-    let(:dob) { Date.new(1979, 4, 2) }
+    let(:dob) { "4-2-1979" }
     let(:record_params) do
       { :last_name => "Hingis",
         :first_name => "Martina",
         :gender => "Female",
-        :dob => "4-2-1979",
+        :dob => dob,
         :fav_color => "Green" }
     end
     let(:record) { Record.new(record_params)}
@@ -29,12 +29,33 @@ describe Record do
       end
 
       it "should store F as :female" do
+        record_params = { :last_name => "Hingis",
+        :first_name => "Martina",
+        :gender => "F",
+        :dob => "4/2/1979",
+        :fav_color => "Green" }
+        record = Record.new(record_params)
+        record.gender.should == :female
       end
 
       it "should store Male as :male" do
+        record_params = { :last_name => "Hingis",
+        :first_name => "Martina",
+        :gender => "Male",
+        :dob => "4/2/1979",
+        :fav_color => "Green" }
+        record = Record.new(record_params)
+        record.gender.should == :male
       end
 
       it "should store M as :male" do
+        record_params = { :last_name => "Hingis",
+        :first_name => "Martina",
+        :gender => "M",
+        :dob => "4/2/1979",
+        :fav_color => "Green" }
+        record = Record.new(record_params)
+        record.gender.should == :male
       end
 
     end

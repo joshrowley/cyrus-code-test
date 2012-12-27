@@ -22,7 +22,7 @@ describe RecordFactory do
         Record.new(:last_name => "Hingis", :first_name => "Martina", :gender => "F", :fav_color => "Green", :dob => "4-2-1979"),
         Record.new(:last_name => "Seles", :first_name => "Monica", :gender => "F", :fav_color => "Black", :dob => "12-2-1973")
       ]
-      RecordFactory.create_from_data([comma_data, pipe_data, space_data]).should eql(result)
+      RecordFactory.create_from_data([comma_data, pipe_data, space_data]).should == result
     end
 
   end
