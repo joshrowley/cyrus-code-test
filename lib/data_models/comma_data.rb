@@ -8,14 +8,24 @@ class CommaData
   end
 
   def parse_record_params
-    CSV.parse(raw_data).inject([]) do |array, row|
-      row = row.collect { |elem| elem.strip }
-      array << {  :last_name => row[0],
-                  :first_name => row[1],
-                  :gender => row[2],
-                  :fav_color => row[3],
-                  :dob => row[4]  }
-    end
+    build_record_params_hash(parsed_data)
   end
+
+  private
+
+    def parsed_data
+      CSV.parse(raw_data)
+    end
+
+    def build_record_params_hash(parsed_data)
+      parsed_data.inject([]) do |array, row|
+        row = row.collect { |elem| elem.strip }
+        array << {  :last_name => row[0],
+                    :first_name => row[1],
+                    :gender => row[2],
+                    :fav_color => row[3],
+                    :dob => row[4]  }
+      end
+    end
 
 end
