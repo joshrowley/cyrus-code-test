@@ -8,17 +8,14 @@ class CommaData
   end
 
   def parse
-    parsed_data = []
-    CSV.parse(raw_data) do |row|
-      hash = {}
-      hash[:last_name] = row[0].strip
-      hash[:first_name] = row[1].strip
-      hash[:gender] = row[2].strip
-      hash[:fav_color] = row[3].strip
-      hash[:dob] = row[4].strip
-      parsed_data << hash
+    CSV.parse(raw_data).inject([]) do |array, row|
+      row = row.collect { |elem| elem.strip }
+      array << {  :last_name => row[0],
+                  :first_name => row[1],
+                  :gender => row[2],
+                  :fav_color => row[3],
+                  :dob => row[4]  }
     end
-    parsed_data
   end
 
 end
