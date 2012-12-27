@@ -1,3 +1,1 @@
-require_relative '../comma_delimited'
-require_relative '../pipe_delimited'
-require_relative '../space_delimited'
+Dir[File.dirname(__FILE__) + '../lib/*.rb'].each {|file| require file }
