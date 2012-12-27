@@ -1,1 +1,0 @@
-pipe_delimited_spec.rb

@@ -9,12 +9,12 @@ describe CommaData do
       Kelly, Sue, Female, Pink, 7/12/1959
     DATA
   end
-  let(:comma_data) { CommaDelimited.new(raw_data) }
+  let(:comma_data) { CommaData.new(raw_data) }
 
   describe "#initialize" do
 
     it "should store raw data upon creation" do
-      comma_data.raw_data.should == source_path
+      comma_data.raw_data.should == raw_data
     end
 
   end
@@ -24,7 +24,7 @@ describe CommaData do
     it "should parse raw_data into an array of hashes with record object params" do
       parsed_data = [
         {:last_name => "Abercrombie", :first_name => "Neil", :gender => "Male", :fav_color => "Tan", :dob => "2/13/1943"},
-        {:last_name => "Bishop", :first_name => "Tom", :gender => "Male", :fav_color => "Yellow", :dob => "4/23/1967"},
+        {:last_name => "Bishop", :first_name => "Timothy", :gender => "Male", :fav_color => "Yellow", :dob => "4/23/1967"},
         {:last_name => "Kelly", :first_name => "Sue", :gender => "Female", :fav_color => "Pink", :dob => "7/12/1959"}
       ]
       comma_data.parse.should == parsed_data
