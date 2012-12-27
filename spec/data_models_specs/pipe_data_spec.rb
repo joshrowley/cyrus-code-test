@@ -9,6 +9,7 @@ describe PipeData do
       Bouillon | Francis | G | M | Blue | 6-3-1975
     DATA
   end
+  
   let(:pipe_data) { PipeData.new(raw_data) }
 
   describe "#initialize" do
