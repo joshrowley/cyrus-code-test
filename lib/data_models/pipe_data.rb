@@ -5,7 +5,7 @@ class PipeData
     @raw_data = raw_data
   end
 
-  def parse
+  def parse_record_params
     parsed_data.inject([]) do |array, row|
       array << {  :last_name => row[0],
                   :first_name => row[1],

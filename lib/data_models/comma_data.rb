@@ -7,7 +7,7 @@ class CommaData
     @raw_data = raw_data
   end
 
-  def parse
+  def parse_record_params
     CSV.parse(raw_data).inject([]) do |array, row|
       row = row.collect { |elem| elem.strip }
       array << {  :last_name => row[0],

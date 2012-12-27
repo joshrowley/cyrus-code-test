@@ -19,15 +19,15 @@ describe CommaData do
 
   end
 
-  describe "#parse" do
+  describe "#parse_record_params" do
     
     it "should parse raw_data into an array of hashes with record object params" do
-      parsed_data = [
+      parsed_record_params = [
         {:last_name => "Abercrombie", :first_name => "Neil", :gender => "Male", :fav_color => "Tan", :dob => "2/13/1943"},
         {:last_name => "Bishop", :first_name => "Timothy", :gender => "Male", :fav_color => "Yellow", :dob => "4/23/1967"},
         {:last_name => "Kelly", :first_name => "Sue", :gender => "Female", :fav_color => "Pink", :dob => "7/12/1959"}
       ]
-      comma_data.parse.should == parsed_data
+      comma_data.parse_record_params.should == parsed_record_params
     end
 
   end

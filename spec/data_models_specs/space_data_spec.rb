@@ -20,14 +20,14 @@ describe SpaceData do
 
   end
 
-  describe "#parse" do
+  describe "#parse_record_params" do
     it "should parse raw_data into an array of hashes with record object params" do
-      parsed_data = [
+      parsed_record_params = [
         {:last_name => "Kournikova", :first_name => "Anna", :middle_initial => "F", :gender => "F", :dob => "6-3-1975", :fav_color => "Red"},
         {:last_name => "Hingis", :first_name => "Martina", :middle_initial => "M", :gender => "F", :dob => "4-2-1979", :fav_color => "Green"},
         {:last_name => "Seles", :first_name => "Monica", :middle_initial => "H", :gender => "F", :dob => "12-2-1973", :fav_color => "Black"}
       ]
-      space_data.parse.should == parsed_data
+      space_data.parse_record_params.should == parsed_record_params
     end
   end
 

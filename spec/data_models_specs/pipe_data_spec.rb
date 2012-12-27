@@ -20,15 +20,15 @@ describe PipeData do
 
   end
 
-  describe "#parse" do
+  describe "#parse_record_params" do
 
     it "should parse raw_data into an array of hashes with record object params" do
-      parsed_data = [
+      parsed_record_params = [
         {:last_name => "Smith", :first_name => "Steve", :middle_initial => "D", :gender => "M", :fav_color => "Red", :dob => "3-3-1985"},
         {:last_name => "Bonk", :first_name => "Radek", :middle_initial => "S", :gender => "M", :fav_color => "Green", :dob => "6-3-1975"},
         {:last_name => "Bouillon", :first_name => "Francis", :middle_initial => "G", :gender => "M", :fav_color => "Blue", :dob => "6-3-1975"}
       ]
-      pipe_data.parse.should == parsed_data
+      pipe_data.parse_record_params.should == parsed_record_params
     end
 
   end
