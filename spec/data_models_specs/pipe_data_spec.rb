@@ -14,7 +14,6 @@ describe PipeData do
   describe "#initialize" do
 
     it "should store raw data upon creation" do
-      pending
       pipe_data.raw_data.should == raw_data
     end
 
@@ -23,7 +22,6 @@ describe PipeData do
   describe "#parse" do
 
     it "should parse raw_data into an array of hashes with record object params" do
-      pending
       parsed_data = [
         {:last_name => "Smith", :first_name => "Steve", :middle_initial => "D", :gender => "M", :fav_color => "Red", :dob => "3-3-1985"},
         {:last_name => "Bonk", :first_name => "Radek", :middle_initial => "S", :gender => "M", :fav_color => "Green", :dob => "6-3-1975"},
