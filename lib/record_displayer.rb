@@ -5,10 +5,6 @@ class RecordDisplayer
     @records = records
   end
 
-  def format_for_output(input_records = nil)
-    build_formatted_record_string(input_records || records).join("\n")
-  end
-
   def display_by_dob
     format_for_output(sort_by_dob)
   end
@@ -41,6 +37,10 @@ class RecordDisplayer
   end
 
   private
+
+    def format_for_output(records)
+      build_formatted_record_string(records).join("\n")
+    end
 
     def build_formatted_record_string(records)
       records.collect do |record|

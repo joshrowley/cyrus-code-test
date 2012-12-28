@@ -94,18 +94,6 @@ let(:record_displayer) { RecordDisplayer.new(records) }
 
   end
 
-  describe "#format_for_output" do
-
-    it "should correctly format stored instance records ready to be puts-ed with no args" do
-      record_displayer.format_for_output.should == formatted_records
-    end
-
-    it "should be able to format records passed in as args" do
-      record_displayer.format_for_output(record_displayer.sort_by_dob).should == formatted_by_dob
-    end
-
-  end
-
   describe "#display_by_gender_then_last_name"do
 
     it "should return a correctly formatted string by gender then last name"do
