@@ -50,19 +50,10 @@ let(:records_by_dob) do
   Record.new(:last_name => "Smith", :first_name => "Steve", :gender => "M", :fav_color => "Red", :dob => "3-3-1985")  ]
 end
 
-# let(:formatted_records) do
-#   <<-RECORDS
-#   Hingis Martina Female 4/2/1979 Green
-#   Kelly Sue Female 7/12/1959 Pink
-#   Kournikova Anna Female 6/3/1975 Red
-#   Seles Monica Female 12/2/1973 Black
-#   Abercrombie Neil Male 2/13/1943 Tan
-#   Bishop Timothy Male 4/23/1967 Yellow
-#   Bonk Radek Male 6/3/1975 Green
-#   Bouillon Francis Male 6/3/1975 Blue
-#   Smith Steve Male 3/3/1985 Red
-#   RECORDS
-# end
+let(:formatted_records) { "Abercrombie Neil Male 2/13/1943 Tan\nBishop Timothy Male 4/23/1967 Yellow\nKelly Sue Female 7/12/1959 Pink\nSmith Steve Male 3/3/1985 Red\nBonk Radek Male 6/3/1975 Green\nBouillon Francis Male 6/3/1975 Blue\nKournikova Anna Female 6/3/1975 Red\nHingis Martina Female 4/2/1979 Green\nSeles Monica Female 12/2/1973 Black" }
+let(:formatted_by_dob) { "Abercrombie Neil Male 2/13/1943 Tan\nKelly Sue Female 7/12/1959 Pink\nBishop Timothy Male 4/23/1967 Yellow\nSeles Monica Female 12/2/1973 Black\nBonk Radek Male 6/3/1975 Green\nBouillon Francis Male 6/3/1975 Blue\nKournikova Anna Female 6/3/1975 Red\nHingis Martina Female 4/2/1979 Green\nSmith Steve Male 3/3/1985 Red" }
+let(:formatted_by_desc_last_name) { "Smith Steve Male 3/3/1985 Red\nSeles Monica Female 12/2/1973 Black\nKournikova Anna Female 6/3/1975 Red\nKelly Sue Female 7/12/1959 Pink\nHingis Martina Female 4/2/1979 Green\nBouillon Francis Male 6/3/1975 Blue\nBonk Radek Male 6/3/1975 Green\nBishop Timothy Male 4/23/1967 Yellow\nAbercrombie Neil Male 2/13/1943 Tan" }
+let(:formatted_by_gender_then_last_name) { "Hingis Martina Female 4/2/1979 Green\nKelly Sue Female 7/12/1959 Pink\nKournikova Anna Female 6/3/1975 Red\nSeles Monica Female 12/2/1973 Black\nAbercrombie Neil Male 2/13/1943 Tan\nBishop Timothy Male 4/23/1967 Yellow\nBonk Radek Male 6/3/1975 Green\nBouillon Francis Male 6/3/1975 Blue\nSmith Steve Male 3/3/1985 Red" }
 
 let(:record_displayer) { RecordDisplayer.new(records) }
 
@@ -106,12 +97,19 @@ let(:record_displayer) { RecordDisplayer.new(records) }
   describe "#format_for_output" do
 
     it "should correctly format stored instance records ready to be puts-ed with no args" do
-      formatted_records =   "Abercrombie Neil Male 2/13/1943 Tan\nBishop Timothy Male 4/23/1967 Yellow\nKelly Sue Female 7/12/1959 Pink\nSmith Steve Male 3/3/1985 Red\nBonk Radek Male 6/3/1975 Green\nBouillon Francis Male 6/3/1975 Blue\nKournikova Anna Female 6/3/1975 Red\nHingis Martina Female 4/2/1979 Green\nSeles Monica Female 12/2/1973 Black"
-      record_displayer.format_for_output.should == formatted_records.strip
+      record_displayer.format_for_output.should == formatted_records
     end
 
-    it "should be able to format records passed in as args, specifically sorted by sort_by_last_name" do
-      record_displayer.format_for_output(record_displayer.sort_by_dob).should == "Abercrombie Neil Male 2/13/1943 Tan\nKelly Sue Female 7/12/1959 Pink\nBishop Timothy Male 4/23/1967 Yellow\nSeles Monica Female 12/2/1973 Black\nBonk Radek Male 6/3/1975 Green\nBouillon Francis Male 6/3/1975 Blue\nKournikova Anna Female 6/3/1975 Red\nHingis Martina Female 4/2/1979 Green\nSmith Steve Male 3/3/1985 Red"
+    it "should be able to format records passed in as args" do
+      record_displayer.format_for_output(record_displayer.sort_by_dob).should == formatted_by_dob
+    end
+
+  end
+
+  describe "#display_by_gender_then_last_name"do
+
+    it "should return a correctly formatted string by gender then last name"do
+      record_displayer.display_by_gender_then_last_name.should == formatted_by_gender_then_last_name
     end
 
   end
@@ -119,7 +117,7 @@ let(:record_displayer) { RecordDisplayer.new(records) }
   describe "#display_by_dob" do
 
     it "should return a correctly formatted string by date of birth" do
-      record_displayer.display_by_dob.should == "Abercrombie Neil Male 2/13/1943 Tan\nKelly Sue Female 7/12/1959 Pink\nBishop Timothy Male 4/23/1967 Yellow\nSeles Monica Female 12/2/1973 Black\nBonk Radek Male 6/3/1975 Green\nBouillon Francis Male 6/3/1975 Blue\nKournikova Anna Female 6/3/1975 Red\nHingis Martina Female 4/2/1979 Green\nSmith Steve Male 3/3/1985 Red"
+      record_displayer.display_by_dob.should == formatted_by_dob
     end
 
   end
@@ -127,7 +125,7 @@ let(:record_displayer) { RecordDisplayer.new(records) }
   describe "#display_by_desc_last_name" do
 
     it "should return a correctly formatted string by last name descending" do
-      record_displayer.display_by_desc_last_name.should == "Smith Steve Male 3/3/1985 Red\nSeles Monica Female 12/2/1973 Black\nKournikova Anna Female 6/3/1975 Red\nKelly Sue Female 7/12/1959 Pink\nHingis Martina Female 4/2/1979 Green\nBouillon Francis Male 6/3/1975 Blue\nBonk Radek Male 6/3/1975 Green\nBishop Timothy Male 4/23/1967 Yellow\nAbercrombie Neil Male 2/13/1943 Tan"
+      record_displayer.display_by_desc_last_name.should == formatted_by_desc_last_name
     end
 
   end

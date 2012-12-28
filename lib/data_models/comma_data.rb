@@ -1,5 +1,3 @@
-require 'csv'
-
 class CommaData
   attr_reader :raw_data
 
