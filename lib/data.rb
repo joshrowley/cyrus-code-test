@@ -1,7 +1,8 @@
-class ParsableData
+class AbstractData
   attr_reader :raw_data
 
   def initialize(file_path)
+    raise NotImplementedError, "Cannot directly instantiate AbstractData" if self.class == AbstractData
     @raw_data = File.open(file_path).read
   end
 
@@ -10,7 +11,7 @@ class ParsableData
   end
 end
 
-class CommaData < ParsableData
+class CommaData < AbstractData
   private
 
     def parsed_data
@@ -29,7 +30,7 @@ class CommaData < ParsableData
     end
 end
 
-class PipeData < ParsableData
+class PipeData < AbstractData
   private
   
     def parsed_data
@@ -50,9 +51,9 @@ class PipeData < ParsableData
     end
 end
 
-class SpaceData < ParsableData
+class SpaceData < AbstractData
   private
-  
+
     def parsed_data
       raw_data.lines.collect do |line|
         line.split(" ").collect { |elem| elem.strip }
