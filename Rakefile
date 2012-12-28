@@ -1,5 +1,4 @@
-require_relative 'spec/spec_helper'
-require 'debugger'
+require_relative 'lib/helper'
 
 desc "Display sorted records from source files"
 task :display_records do
