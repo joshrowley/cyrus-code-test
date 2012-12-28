@@ -24,6 +24,8 @@ class Record
         :female
       when "m"
         :male
+      else
+        raise ArgumentError, "Gender must be male or female"
       end
     end
 

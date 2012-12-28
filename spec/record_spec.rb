@@ -58,6 +58,15 @@ describe Record do
         record.gender.should == :male
       end
 
+      it "should raise an error if it can't parse gender" do
+        record_params = { :last_name => "Hingis",
+        :first_name => "Martina",
+        :gender => "test",
+        :dob => "4/2/1979",
+        :fav_color => "Green" }
+        expect { Record.new(record_params) }.to raise_error
+      end
+
     end
 
     context "it should store date of birth as a date object" do

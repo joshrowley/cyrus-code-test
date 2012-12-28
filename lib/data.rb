@@ -6,7 +6,7 @@ class ParsableData
   end
 
   def parse_record_params
-    build_record_params_hash_from_parsed_data
+    build_record_params_from_parsed_data
   end
 end
 
@@ -17,7 +17,7 @@ class CommaData < ParsableData
       CSV.parse(raw_data)
     end
 
-    def build_record_params_hash_from_parsed_data
+    def build_record_params_from_parsed_data
       parsed_data.inject([]) do |array, row|
         row = row.collect { |elem| elem.strip }
         array << {  :last_name => row[0],
@@ -38,7 +38,7 @@ class PipeData < ParsableData
       end
     end
 
-    def build_record_params_hash_from_parsed_data
+    def build_record_params_from_parsed_data
       parsed_data.inject([]) do |array, row|
         array << {  :last_name => row[0],
                     :first_name => row[1],
@@ -52,13 +52,14 @@ end
 
 class SpaceData < ParsableData
   private
+  
     def parsed_data
       raw_data.lines.collect do |line|
         line.split(" ").collect { |elem| elem.strip }
       end
     end
 
-    def build_record_params_hash_from_parsed_data
+    def build_record_params_from_parsed_data
       parsed_data.inject([]) do |array, row|
         array << {  :last_name => row[0],
                     :first_name => row[1],
