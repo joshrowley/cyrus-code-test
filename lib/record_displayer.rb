@@ -6,31 +6,31 @@ class RecordDisplayer
   end
 
   def display_by_dob
-    format_for_output(sort_by_dob)
+    format_for_output(records_by_dob)
   end
 
   def display_by_gender_then_last_name
-    format_for_output(sort_by_gender_then_last_name)
+    format_for_output(records_by_gender_then_last_name)
   end
 
   def display_by_desc_last_name
-    format_for_output(sort_by_last_name(:desc))
+    format_for_output(records_by_last_name(:desc))
   end
 
-  def sort_by_gender_then_last_name
+  def records_by_gender_then_last_name
     records.sort do |a,b|
       [a.gender, a.last_name] <=> [b.gender, b.last_name]
     end
   end
 
-  def sort_by_last_name(order = nil)
+  def records_by_last_name(order = nil)
     records.sort! do |a,b|
       a.last_name.downcase <=> b.last_name.downcase
     end
     order == :desc ? records.reverse : records
   end
 
-  def sort_by_dob
+  def records_by_dob
     records.sort do |a,b|
       a.dob <=> b.dob
     end

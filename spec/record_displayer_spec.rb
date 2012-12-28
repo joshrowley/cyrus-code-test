@@ -66,30 +66,30 @@ let(:record_displayer) { RecordDisplayer.new(records) }
 
   end
 
-  describe "#sort_by_gender_then_last_name" do
+  describe "#records_by_gender_then_last_name" do
 
     it "should sort records by gender then by last_name" do
-      record_displayer.sort_by_gender_then_last_name.should == records_by_gender_then_last_name
+      record_displayer.records_by_gender_then_last_name.should == records_by_gender_then_last_name
     end
 
   end
 
-  describe "#sort_by_last_name" do
+  describe "#records_by_last_name" do
 
     it "should sort records by last_name ascending by default" do
-      record_displayer.sort_by_last_name.should == records_by_last_name
+      record_displayer.records_by_last_name.should == records_by_last_name
     end
 
     it "should sort records by last_name descending when passed in the option" do
-      record_displayer.sort_by_last_name(:desc).should == records_by_last_name.reverse
+      record_displayer.records_by_last_name(:desc).should == records_by_last_name.reverse
     end
 
   end
 
-  describe "#sort_by_dob" do
+  describe "#records_by_dob" do
 
     it "should sort records by date of birth" do
-      record_displayer.sort_by_dob.should == records_by_dob
+      record_displayer.records_by_dob.should == records_by_dob
     end
 
   end
