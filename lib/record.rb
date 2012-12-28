@@ -1,8 +1,8 @@
 class Record
 
-  RecordAttributes = :last_name, :first_name, :gender, :dob, :fav_color
+  ATTRS = :last_name, :first_name, :gender, :dob, :fav_color
 
-  RecordAttributes.each { |attribute| attr_reader attribute }
+  ATTRS.each { |attribute| attr_reader attribute }
 
   def initialize(args)
     @last_name = args[:last_name]
@@ -13,10 +13,7 @@ class Record
   end
 
   def ==(other_record)
-    equivalent_attrs = RecordAttributes.select do |attribute|
-      self.send(attribute) == other_record.send(attribute)
-    end
-    true if equivalent_attrs.count == RecordAttributes.count
+    true if equivalent_attributes_with(other_record).count == ATTRS.count
   end
 
   private
@@ -37,4 +34,9 @@ class Record
       Date.new(date_args[2], date_args[0], date_args[1])
     end
 
+    def equivalent_attributes_with(other_record)
+      ATTRS.select do |attribute|
+        self.send(attribute) == other_record.send(attribute)
+      end
+    end
 end
